@@ -11,7 +11,7 @@ public class DemoApplication {
 		// SpringApplication.run(DemoApplication.class, args);
 		ApplicationContext context = new AnnotationConfigApplicationContext(Configure.class);
 
-		Mobiles obj = context.getBean("getIphoneobject",Mobiles.class);
+		Mobiles obj = context.getBean("getOneplusobject",Mobiles.class);
 
 		obj.getModalAndColor();
 
