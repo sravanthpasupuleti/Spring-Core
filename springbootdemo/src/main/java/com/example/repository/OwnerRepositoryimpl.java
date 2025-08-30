@@ -1,17 +1,18 @@
 package com.example.repository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
+@Primary
 public class  OwnerRepositoryimpl implements OwnerRepository{
 
     public OwnerRepositoryimpl(){
-        System.out.println("ownerrepositoryimpl constructor");
+        System.out.println("ownerrepositoryimpl Normal constructor");
     }
 
     public String findid(int ownerid) {
-        // System.out.println("owner id is" + ownerid);
-        return "owner id is" + ownerid;
+        return "owner id is " + ownerid;
     }
 
 }
