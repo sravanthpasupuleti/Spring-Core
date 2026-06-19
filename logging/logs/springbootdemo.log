@@ -1,0 +1,7 @@
+2026-06-19T21:45:08.387+05:30  INFO 14356 --- [springbootdemo] [main] com.sravanth.SpringbootdemoApplication   : Starting SpringbootdemoApplication using Java 21.0.10 with PID 14356 (C:\Java\Spring-Core\logging\target\classes started by Ashok in C:\Java\Spring-Core\logging)
+2026-06-19T21:45:08.402+05:30  INFO 14356 --- [springbootdemo] [main] com.sravanth.SpringbootdemoApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-19T21:45:09.208+05:30  INFO 14356 --- [springbootdemo] [main] com.sravanth.SpringbootdemoApplication   : Started SpringbootdemoApplication in 1.487 seconds (process running for 1.91)
+2026-06-19T21:45:09.214+05:30  INFO 14356 --- [springbootdemo] [main] com.sravanth.SpringbootdemoApplication   : Execution has Started
+2026-06-19T21:45:09.215+05:30  INFO 14356 --- [springbootdemo] [main] com.sravanth.SpringbootdemoApplication   : Found owner with owner id 20 from repo
+2026-06-19T21:45:13.932+05:30 ERROR 14356 --- [springbootdemo] [main] com.sravanth.SpringbootdemoApplication   : cant find owner with 21
+2026-06-19T21:45:13.932+05:30  INFO 14356 --- [springbootdemo] [main] com.sravanth.SpringbootdemoApplication   : Execution Ended
