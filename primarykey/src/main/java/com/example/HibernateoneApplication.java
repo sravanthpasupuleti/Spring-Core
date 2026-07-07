@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.example.dto.OwnerDTO;
+import com.example.dto.PetDTO;
 import com.example.service.OwnerService;
+import com.example.service.PetService;
 import com.example.service.impl.OwnerServiceImpl;
+import com.example.service.impl.PetServiceImpl;
 import com.example.util.InputUtil;
 
 public class HibernateoneApplication {
@@ -17,6 +20,7 @@ public class HibernateoneApplication {
 
 	public void run(){
 		OwnerService ownerService = new OwnerServiceImpl();
+		PetService petService = new PetServiceImpl();
 		try(Scanner scanner = new Scanner(System.in)){
 			do {
 				System.out.println("Welcome to Petistaan");
@@ -44,11 +48,12 @@ public class HibernateoneApplication {
 					ownerService.deleteOwner(ownerId);
 					System.out.println("Owner has been deleted successfully.");
 					break;
-				// case 5:
-				// 	List<OwnerDTO> ownerDTOList = ownerService.findAllOwners();
-				// 	System.out.println("There are " + ownerDTOList.size() + " owners.");
-				// 	ownerDTOList.forEach(System.out::println);
-				// 	break;
+				case 5:
+					int petId = InputUtil.acceptPetIdToOperate(scanner);
+					PetDTO petDTO = petService.findPet(petId);
+					System.out.println("Pet has been fetched successfully.");
+					System.out.println(petDTO);
+					break;
 				default:
 					System.out.println("Invalid option entered.");
 				}

@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import com.example.config.DatabaseConfig;
 import com.example.entity.Owner;
+import com.example.entity.Pet;
 import com.example.repository.OwnerRepository;
 
 public class OwnerRepositoryImpl implements OwnerRepository{
@@ -36,7 +37,7 @@ public class OwnerRepositoryImpl implements OwnerRepository{
         try(Session session = sessionFactory.openSession()){
             Transaction transaction = session.beginTransaction();
             Owner owner = session.find(Owner.class, ownerId);
-            owner.setPetName(petName);
+            owner.getPet().setName(petName);
             session.merge(owner);
             transaction.commit();
         }
@@ -51,12 +52,5 @@ public class OwnerRepositoryImpl implements OwnerRepository{
             transaction.commit();
         }
     }
-
-    // @Override
-    // public List<Owner> findAllOwners() {
-    //     try(Session session = sessionFactory.openSession()){
-    //         return null;
-    //     }
-    // }
 
 }

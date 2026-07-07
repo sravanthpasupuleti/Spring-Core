@@ -1,9 +1,5 @@
 package com.example.dto;
-
-import java.time.LocalDate;
-
 import com.example.enums.Gender;
-import com.example.enums.PetType;
 
 
 public class OwnerDTO {
@@ -15,11 +11,7 @@ public class OwnerDTO {
 	private String state;
 	private String mobileNumber;
 	private String emailId;
-	private int petId;
-	private String petName;
-	private LocalDate petBirthDate;
-	private Gender petGender;
-	private PetType petType;
+	private PetDTO petDTO;
 
 	public int getId() {
 		return id;
@@ -85,51 +77,19 @@ public class OwnerDTO {
 		this.emailId = emailId;
 	}
 
-	public int getPetId() {
-		return petId;
+	public void setPetDTO(PetDTO petDTO){
+		this.petDTO = petDTO;
 	}
 
-	public void setPetId(int petId) {
-		this.petId = petId;
-	}
-
-	public String getPetName() {
-		return petName;
-	}
-
-	public void setPetName(String petName) {
-		this.petName = petName;
-	}
-
-	public LocalDate getPetBirthDate() {
-		return petBirthDate;
-	}
-
-	public void setPetBirthDate(LocalDate petBirthDate) {
-		this.petBirthDate = petBirthDate;
-	}
-
-	public Gender getPetGender() {
-		return petGender;
-	}
-
-	public void setPetGender(Gender petGender) {
-		this.petGender = petGender;
-	}
-
-	public PetType getPetType() {
-		return petType;
-	}
-
-	public void setPetType(PetType petType) {
-		this.petType = petType;
+	public PetDTO getPetDTO(){
+		return petDTO;
 	}
 
 	@Override
 	public String toString() {
 		return "OwnerDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
 				+ ", city=" + city + ", state=" + state + ", mobileNumber=" + mobileNumber + ", emailId=" + emailId
-				+ ", petId=" + petId + ", petName=" + petName + ", petBirthDate=" + petBirthDate + ", petGender="
-				+ petGender + ", petType=" + petType + "]";
+				+ ", petDTO=" + petDTO + "]";
 	}
+
 }

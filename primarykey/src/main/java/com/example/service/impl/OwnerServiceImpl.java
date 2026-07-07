@@ -5,9 +5,12 @@ import java.util.Objects;
 
 import com.example.config.PropertiesConfig;
 import com.example.dto.OwnerDTO;
+import com.example.dto.PetDTO;
 import com.example.entity.Owner;
+import com.example.entity.Pet;
 import com.example.exception.DuplicateOwnerException;
 import com.example.exception.OwnerNotFoundException;
+import com.example.exception.PetNotFoundException;
 import com.example.repository.OwnerRepository;
 import com.example.repository.impl.OwnerRepositoryImpl;
 import com.example.service.OwnerService;
@@ -18,6 +21,7 @@ public class OwnerServiceImpl implements OwnerService{
     private OwnerRepository ownerRepository;
 
     private static final String OWNER_NOT_FOUND = "owner.not.found";
+  
     private static final String OWNER_ALREADY_EXITS = "owner.already.exists";
 	private static final PropertiesConfig PROPERTIES_CONFIG = PropertiesConfig.getInstance();
     
@@ -58,8 +62,5 @@ public class OwnerServiceImpl implements OwnerService{
         ownerRepository.deleteOwner(ownerId);
     }
 
-    // @Override
-    // public List<OwnerDTO> findAllOwners() {
-        
-    // }
+    
 }

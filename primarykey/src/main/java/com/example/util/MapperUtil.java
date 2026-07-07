@@ -1,7 +1,9 @@
 package com.example.util;
 
 import com.example.dto.OwnerDTO;
+import com.example.dto.PetDTO;
 import com.example.entity.Owner;
+import com.example.entity.Pet;
 
 public class MapperUtil {
     private MapperUtil() {
@@ -18,17 +20,23 @@ public class MapperUtil {
 		ownerDTO.setState(owner.getState());
 		ownerDTO.setMobileNumber(owner.getMobileNumber());
 		ownerDTO.setEmailId(owner.getEmailId());
-		ownerDTO.setPetId(owner.getPetId());
-		ownerDTO.setPetName(owner.getPetName());
-		ownerDTO.setPetBirthDate(owner.getPetBirthDate());
-		ownerDTO.setPetGender(owner.getPetGender());
-		ownerDTO.setPetType(owner.getPetType());
+		PetDTO petDTO = convertPetEntityToDto(owner.getPet());
+		ownerDTO.setPetDTO(petDTO);
 		return ownerDTO;
+	}
+
+	public static PetDTO convertPetEntityToDto(Pet pet) {
+		PetDTO petDTO = new PetDTO();
+		petDTO.setId(pet.getId());
+		petDTO.setName(pet.getName());
+		petDTO.setBirthDate(pet.getBirthDate());
+		petDTO.setGender(pet.getGender());
+		petDTO.setType(pet.getType());
+		return petDTO;
 	}
 
 	public static Owner convertOwnerDtoToEntity(OwnerDTO ownerDTO) {
 		Owner owner = new Owner();
-		// owner.setId(ownerDTO.getId());
 		owner.setFirstName(ownerDTO.getFirstName());
 		owner.setLastName(ownerDTO.getLastName());
 		owner.setGender(ownerDTO.getGender());
@@ -36,11 +44,17 @@ public class MapperUtil {
 		owner.setState(ownerDTO.getState());
 		owner.setMobileNumber(ownerDTO.getMobileNumber());
 		owner.setEmailId(ownerDTO.getEmailId());
-		owner.setPetId(ownerDTO.getPetId());
-		owner.setPetName(ownerDTO.getPetName());
-		owner.setPetBirthDate(ownerDTO.getPetBirthDate());
-		owner.setPetGender(ownerDTO.getPetGender());
-		owner.setPetType(ownerDTO.getPetType());
+		Pet pet = convertPetDtoToEntity(ownerDTO.getPetDTO());
+		owner.setPet(pet);
 		return owner;
+	}
+
+	public static Pet convertPetDtoToEntity(PetDTO petDTO) {
+		Pet pet = new Pet();
+		pet.setName(petDTO.getName());
+		pet.setBirthDate(petDTO.getBirthDate());
+		pet.setGender(petDTO.getGender());
+		pet.setType(petDTO.getType());
+		return pet;
 	}
 }

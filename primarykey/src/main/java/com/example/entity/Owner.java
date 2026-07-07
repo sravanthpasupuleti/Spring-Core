@@ -1,10 +1,8 @@
 package com.example.entity;
 
-import java.time.LocalDate;
-
 import com.example.enums.Gender;
-import com.example.enums.PetType;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,6 +10,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -43,22 +43,9 @@ public class Owner {
 	@Column(name = "email_id", nullable = false, unique = true)
 	private String emailId;
 
-	@Column(name = "pet_id", nullable = false)
-	private int petId;
-
-	@Column(name = "pet_name", nullable = false)
-	private String petName;
-
-	@Column(name = "pet_birth_date", nullable = false)
-	private LocalDate petBirthDate;
-
-	@Enumerated(value = EnumType.STRING)
-	@Column(nullable = false)
-	private Gender petGender;
-
-	@Enumerated(value = EnumType.STRING)
-	@Column(nullable = false)
-	private PetType petType;
+	@OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
+	@JoinColumn(name = "pet_id", referencedColumnName = "id", unique = true, nullable = false)
+	private Pet pet;
 
 	public int getId() {
 		return id;
@@ -120,51 +107,18 @@ public class Owner {
 		this.emailId = emailId;
 	}
 
-	public int getPetId() {
-		return petId;
+	public void setPet(Pet pet){
+		this.pet = pet;
 	}
 
-	public void setPetId(int petId) {
-		this.petId = petId;
-	}
-
-	public String getPetName() {
-		return petName;
-	}
-
-	public void setPetName(String petName) {
-		this.petName = petName;
-	}
-
-	public LocalDate getPetBirthDate() {
-		return petBirthDate;
-	}
-
-	public void setPetBirthDate(LocalDate petBirthDate) {
-		this.petBirthDate = petBirthDate;
-	}
-
-	public Gender getPetGender() {
-		return petGender;
-	}
-
-	public void setPetGender(Gender petGender) {
-		this.petGender = petGender;
-	}
-
-	public PetType getPetType() {
-		return petType;
-	}
-
-	public void setPetType(PetType petType) {
-		this.petType = petType;
+	public Pet getPet(){
+		return pet;
 	}
 
 	@Override
 	public String toString() {
 		return "Owner [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
 				+ ", city=" + city + ", state=" + state + ", mobileNumber=" + mobileNumber + ", emailId=" + emailId
-				+ ", petId=" + petId + ", petName=" + petName + ", petBirthDate=" + petBirthDate + ", petGender="
-				+ petGender + ", petType=" + petType + "]";
+				+ ", pet=" + pet + "]";
 	}
 }
