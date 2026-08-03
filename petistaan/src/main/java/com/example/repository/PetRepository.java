@@ -1,9 +1,8 @@
 package com.example.repository;
 
 import java.util.Optional;
-
-import com.example.dto.PetDTO;
+import com.example.entity.Pet;
 
 public interface PetRepository {
-    Optional<PetDTO> findById(int petId);
+    Optional<Pet> findById(int petId);
 }

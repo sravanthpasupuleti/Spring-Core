@@ -1,23 +1,23 @@
 package com.example.repository.impl;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.dto.PetDTO;
+import com.example.entity.Pet;
 import com.example.repository.PetRepository;
+
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceUnit;
 
 @Repository
 public class PetRepositoryImpl implements PetRepository{
 
-    public PetRepositoryImpl(){
-        this.petDTOList = new ArrayList<>();
-    }
+    @PersistenceUnit
+    private EntityManagerFactory entityManagerFactory;
 
     @Override
-    public Optional<PetDTO> findById(int petId) {
-        return petDTOList.stream().filter(pet -> pet.getId() == petId).findFirst();
+    public Optional<Pet> findById(int petId) {
+        return null;
     }
 
 }

@@ -1,33 +1,27 @@
 package com.example.dto;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
+import com.example.enums.Gender;
+import com.example.enums.PetType;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString(callSuper = true)
 public class DomesticPetDTO extends PetDTO{
-    private LocalDate birthDate;
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
+    
+    @Builder
+    public DomesticPetDTO(int id, String name, Gender gender,  PetType type, OwnerDTO ownerDTO, LocalDate birthDate) {
+        super(id, name, gender, type, ownerDTO);
         this.birthDate = birthDate;
     }
 
-    @Override
-    public String toString() {
-        if (Objects.nonNull(getOwnerDTO())) {
-            return "DomesticPetDTO [birthDate=" + birthDate + ", getBirthDate()=" + getBirthDate() + ", getId()=" + getId()
-                + ", getName()=" + getName() + ", getGender()=" + getGender() + ", getType()=" + getType()
-                + ", getOwnerDTO()=" + getOwnerDTO() + "]";
-        }else{
-             return "DomesticPetDTO [birthDate=" + birthDate + ", getBirthDate()=" + getBirthDate() + ", getId()=" + getId()
-                + ", getName()=" + getName() + ", getGender()=" + getGender() + ", getType()=" + getType()
-                + "]";
-        }
-        
-    }
-
-    
-    
+    private LocalDate birthDate;
 }

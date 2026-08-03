@@ -12,10 +12,11 @@ import com.example.dto.WildPetDTO;
 import com.example.enums.Gender;
 import com.example.enums.PetType;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class InputUtil {
-    private InputUtil() {
-		
-	}
 	
 	public static int acceptMenuOption(Scanner scanner) {
 		System.out.println("Press 1 to add new owner.");

@@ -10,9 +10,13 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "owner_table")
+@Setter
+@Getter
 public class Owner extends Base{
 
     @Column(name = "first_name", nullable = false)
@@ -31,7 +35,7 @@ public class Owner extends Base{
     @Column(nullable = false)
     private String state;
 
-    @Column(name = "mobile_number", nullable = false)
+    @Column(name = "mobile_number", nullable = false, unique = true, length = 14)
     private String mobileNumber;
 
     @Column(nullable = false, unique = true)

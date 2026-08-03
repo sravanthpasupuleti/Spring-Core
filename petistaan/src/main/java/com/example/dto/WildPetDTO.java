@@ -1,32 +1,25 @@
 package com.example.dto;
 
-import java.util.Objects;
+import com.example.enums.Gender;
+import com.example.enums.PetType;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString(callSuper = true)
 public class WildPetDTO extends PetDTO{
-    private String birthPlace;
 
-    public String getBirthPlace() {
-        return birthPlace;
-    }
-
-    public void setBirthPlace(String birthPlace) {
+    @Builder
+    public WildPetDTO(int id, String name, Gender gender,  PetType type, OwnerDTO ownerDTO, String birthPlace){
+        super(id, name, gender, type, ownerDTO);
         this.birthPlace = birthPlace;
     }
 
-    @Override
-    public String toString() {
-        if(Objects.nonNull(getOwnerDTO())){
-            return "WildPetDTO [birthPlace=" + birthPlace + ", getBirthPlace()=" + getBirthPlace() + ", getId()=" + getId()
-                + ", getName()=" + getName() + ", getGender()=" + getGender() + ", getType()=" + getType()
-                + ", getOwnerDTO()=" + getOwnerDTO() + "]";
-        }else{
-            return "WildPetDTO [birthPlace=" + birthPlace + ", getBirthPlace()=" + getBirthPlace() + ", getId()=" + getId()
-                + ", getName()=" + getName() + ", getGender()=" + getGender() + ", getType()=" + getType()
-                + "]";
-        }
-        
-    }
-
-    
-    
+    private String birthPlace;
 }

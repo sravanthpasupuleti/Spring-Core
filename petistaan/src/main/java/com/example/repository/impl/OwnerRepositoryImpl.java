@@ -1,44 +1,46 @@
 package com.example.repository.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
 import com.example.dto.OwnerDTO;
+import com.example.entity.Owner;
 import com.example.repository.OwnerRepository;
+
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceUnit;
 
 @Repository
 public class OwnerRepositoryImpl implements OwnerRepository{
 
-    public OwnerRepositoryImpl(){
-        ownerDTOList = new ArrayList<>();
+    // @PersistenceUnit
+    // private EntityManagerFactory entityManagerFactory;
+
+    @Override
+    public void save(Owner owner) {
+        
     }
 
     @Override
-    public void save(OwnerDTO ownerDTO) {
-        ownerDTOList.add(ownerDTO);
-    }
-
-    @Override
-    public Optional<OwnerDTO> findById(int ownerId) {
-        return ownerDTOList.stream().filter(owner -> owner.getId() == ownerId).findFirst();
+    public Optional<Owner> findById(int ownerId) {
+        return null;
     }
 
     @Override
     public void updatePetDetails(int ownerId, String petName) {
-        ownerDTOList.stream().filter(owner -> owner.getId() == ownerId).findFirst().ifPresent(o -> o.getPetDTO().setName(petName));
+        
     }
 
     @Override
     public void deleteById(int ownerId) {
-        ownerDTOList.removeIf(o -> o.getId() == ownerId);
+        
     }
 
     @Override
-    public List<OwnerDTO> findAll() {
-        return ownerDTOList;
+    public List<Owner> findAll() {
+        return null;
     }
 
 }

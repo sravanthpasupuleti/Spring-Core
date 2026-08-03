@@ -1,5 +1,18 @@
 package com.example.entity;
 
-public class DomesticPet extends Pet{
+import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@Entity
+@Table(name = "domestic_pet_table")
+public class DomesticPet extends Pet{
+    @Column(name = "date_of_birth", nullable = false)
+    private LocalDate birthDate;
 }
